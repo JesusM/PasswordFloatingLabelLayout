@@ -3,6 +3,7 @@ package com.jesusm.floatinglabelpass.app.ui.activities.customviews;
 import android.animation.ArgbEvaluator;
 import android.animation.ObjectAnimator;
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
@@ -29,6 +30,7 @@ public class PasswordFloatLabelLayout extends FloatLabelLayout {
     private int passwordStrongState = PASSWORD_STRONG_BAD;
     private boolean isPassword = false;
     private int passLength = 0;
+    private boolean showStateIcon = false;
 
     public PasswordFloatLabelLayout(Context context) {
         this(context, null);
@@ -40,6 +42,18 @@ public class PasswordFloatLabelLayout extends FloatLabelLayout {
 
     public PasswordFloatLabelLayout(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
+
+
+        final TypedArray a = context
+                .obtainStyledAttributes(attrs, R.styleable.PasswordFloatLabelLayout);
+
+        showStateIcon = a.getBoolean(R.styleable.PasswordFloatLabelLayout_showStateIcon, false);
+        if (showStateIcon){
+            initAcceptDrawableCompound();
+        }
+    }
+
+    private void initAcceptDrawableCompound() {
         // Read your drawable from somewhere
         Drawable dr = getResources().getDrawable(R.drawable.ic_action_navigation_accept);
         Bitmap bitmap = ((BitmapDrawable) dr).getBitmap();
