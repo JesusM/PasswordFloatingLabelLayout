@@ -2,9 +2,10 @@ PasswordFloatingLabelLayout
 ===========================
 Forked from FloatingLabelLayout https://gist.github.com/chrisbanes/11247418, this sample adds a little behavior to the floating label showing how strong the password is.
 
-![Demo gif](https://i.imgflip.com/8jmeb.gif)
+![Demo gif](https://i.imgflip.com/8n79q.gif)
 
-[Video] (https://www.youtube.com/watch?v=vToZx9riJJo&feature=youtu.be)
+
+[Video] (https://www.youtube.com/watch?v=Ki_ur4qZbZQ)
 
 You need to add this to your code:
 
