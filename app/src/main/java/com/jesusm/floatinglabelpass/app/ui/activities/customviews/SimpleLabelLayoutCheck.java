@@ -9,7 +9,7 @@ import com.jesusm.floatinglabelpass.app.R;
 /**
  * Created by Jesus on 05/05/14.
  */
-public class SimpleLabelLayoutCheck extends CheckStrongLabelLayout {
+public class SimpleLabelLayoutCheck extends CheckStrenghtLabelLayout {
 
     private int color = getResources().getColor(R.color.float_label);
 

@@ -9,7 +9,7 @@ import com.jesusm.floatinglabelpass.app.R;
 /**
  * Created by Jesus on 03/05/14.
  */
-public class PasswordFloatLabelLayoutCheck extends CheckStrongLabelLayout {
+public class PasswordFloatLabelLayoutCheck extends CheckStrenghtLabelLayout {
 
     private int passLength = 0;
     private boolean showLabelIcon = false;

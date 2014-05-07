@@ -10,7 +10,7 @@ import com.jesusm.floatinglabelpass.app.R;
 /**
  * Created by Jesus on 05/05/14.
  */
-public class MailLabelLayoutCheck extends CheckStrongLabelLayout {
+public class MailLabelLayoutCheck extends CheckStrenghtLabelLayout {
     private boolean valid = false;
 
 

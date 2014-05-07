@@ -15,22 +15,22 @@ import com.nineoldandroids.animation.ValueAnimator;
 /**
  * Created by Jesus on 05/05/14.
  */
-public abstract class CheckStrongLabelLayout extends FloatLabelLayout {
+public abstract class CheckStrenghtLabelLayout extends FloatLabelLayout {
 
     private static final long LABEL_COLOR_CHANGE_ANIMATION_TIME = 333L;
 
     private BitmapDrawable acceptDrawable;
     private int lastColor = getResources().getColor(R.color.float_label);
 
-    public CheckStrongLabelLayout(Context context) {
+    public CheckStrenghtLabelLayout(Context context) {
         this(context, null);
     }
 
-    public CheckStrongLabelLayout(Context context, AttributeSet attrs) {
+    public CheckStrenghtLabelLayout(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public CheckStrongLabelLayout(Context context, AttributeSet attrs, int defStyle) {
+    public CheckStrenghtLabelLayout(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
 
         initAcceptDrawableCompound();
