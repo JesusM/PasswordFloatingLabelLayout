@@ -1,3 +1,19 @@
 PasswordFloatingLabelLayout
 ===========================
-Forked from FloatingLabelLayout https://gist.github.com/chrisbanes/11247418, this class adds a little behavior to the floating label showing how strong the password is.
+Forked from FloatingLabelLayout https://gist.github.com/chrisbanes/11247418, this sample adds a little behavior to the floating label showing how strong the password is.
+
+![Demo gif](https://i.imgflip.com/8jmeb.gif)
+
+[Video] (https://www.youtube.com/watch?v=vToZx9riJJo&feature=youtu.be)
+
+You need to add this to your code:
+
+````XML
+<YourPackage.PasswordFloatLabelLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:floatLabelTextAppearance="@style/TextAppearance.YourApp.FloatLabel"
+        app:showStateIcon="true">
+````
+
+app:showStateIcon (false by default) indicate if you want to show an icon when your password is strong.
