@@ -6,7 +6,7 @@
         <attr name="floatLabelSidePadding" format="reference|dimension" />
     </declare-styleable>
 
-    <declare-styleable name="PasswordFloatLabelLayout">
+    <declare-styleable name="PasswordFloatLabelLayoutCheck">
         <attr name="showStateIcon" format="boolean" />
     </declare-styleable>
 </resources>

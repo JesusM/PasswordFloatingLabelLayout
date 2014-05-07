@@ -24,7 +24,7 @@
 
     </com.jesusm.floatinglabelpass.app.ui.activities.customviews.FloatLabelLayout>
 
-    <com.jesusm.floatinglabelpass.app.ui.activities.customviews.PasswordFloatLabelLayout
+    <com.jesusm.floatinglabelpass.app.ui.activities.customviews.PasswordFloatLabelLayoutCheck
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -37,9 +37,25 @@
             android:layout_height="wrap_content"
             android:hint="@string/account_password_hint"
             android:singleLine="true"
-            android:inputType="textNoSuggestions|textPassword"
             android:imeOptions="actionDone" />
 
-    </com.jesusm.floatinglabelpass.app.ui.activities.customviews.PasswordFloatLabelLayout>
+    </com.jesusm.floatinglabelpass.app.ui.activities.customviews.PasswordFloatLabelLayoutCheck>
+
+    <com.jesusm.floatinglabelpass.app.ui.activities.customviews.MailLabelLayoutCheck
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:floatLabelTextAppearance="@style/TextAppearance.YourApp.FloatLabel"
+        app:showStateIcon="true">
+
+        <EditText
+            android:id="@+id/edit_mail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/account_email_hint"
+            android:singleLine="true"
+            android:imeOptions="actionDone" />
+
+    </com.jesusm.floatinglabelpass.app.ui.activities.customviews.MailLabelLayoutCheck>
 
 </LinearLayout>

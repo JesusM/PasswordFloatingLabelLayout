@@ -14,8 +14,6 @@ package com.jesusm.floatinglabelpass.app.ui.activities.customviews;/*
  * limitations under the License.
  */
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
@@ -32,6 +30,10 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.jesusm.floatinglabelpass.app.R;
+import com.nineoldandroids.animation.Animator;
+import com.nineoldandroids.animation.AnimatorSet;
+import com.nineoldandroids.animation.ObjectAnimator;
+import com.nineoldandroids.view.ViewHelper;
 
 /**
  * Layout which an {@link android.widget.EditText} to show a floating label when the hint is hidden
@@ -111,40 +113,44 @@ public class FloatLabelLayout extends FrameLayout {
     protected void setEditText(EditText editText) {
         mEditText = editText;
 
-        addTextWatcher();
-
         // Add focus listener to the EditText so that we can notify the label that it is activated.
         // Allows the use of a ColorStateList for the text color on the label
         mEditText.setOnFocusChangeListener(new OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view, boolean focused) {
-                mLabel.setActivated(focused);
+                mLabel.setEnabled(focused);
             }
         });
 
+        initTextWatcher();
+        updateLabelText();
+
+    }
+
+    protected void updateLabelText() {
         mLabel.setText(mEditText.getHint());
-
     }
 
-    protected void addTextWatcher() {
-        // Add a TextWatcher so that we know when the text input has changed
-        mEditText.addTextChangedListener(new TextWatcher() {
-
+    private void initTextWatcher() {
+        getEditText().addTextChangedListener(new TextWatcher() {
             @Override
-            public void afterTextChanged(Editable s) {
-                checkAfterTextChanged(s);
+            public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {
+
             }
 
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {
+
             }
 
             @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-            }
+            public void afterTextChanged(Editable editable) {
+                checkAfterTextChanged(editable);
 
+            }
         });
     }
+
 
     protected void checkAfterTextChanged(Editable s) {
         if (TextUtils.isEmpty(s)) {
@@ -162,6 +168,16 @@ public class FloatLabelLayout extends FrameLayout {
         if (mLabel.getVisibility() != View.VISIBLE) {
             showLabel();
         }
+        updateLabelColor();
+
+    }
+
+
+    /**
+     * Need to be overriden to update the label text color
+     */
+    public void updateLabelColor() {
+        getLabel().setTextColor(getmLabelColor());
     }
 
     /**
@@ -182,35 +198,72 @@ public class FloatLabelLayout extends FrameLayout {
      * Show the label using an animation
      */
     private void showLabel() {
-        mLabel.setVisibility(View.VISIBLE);
-        mLabel.setAlpha(0f);
-        mLabel.setTranslationY(mLabel.getHeight());
-        mLabel.animate()
-                .alpha(1f)
-                .translationY(0f)
-                .setDuration(ANIMATION_DURATION)
-                .setListener(null).start();
+        ObjectAnimator alpha = ObjectAnimator.ofFloat(mLabel, "alpha", 0f, 1f);
+        ObjectAnimator translationY = ObjectAnimator.ofFloat(mLabel, "translationY", mLabel.getHeight(), 0f);
+        AnimatorSet animatorSet = new AnimatorSet();
+        animatorSet.setDuration(ANIMATION_DURATION);
+        animatorSet.playTogether(alpha, translationY);
+        animatorSet.addListener(new Animator.AnimatorListener() {
+            @Override
+            public void onAnimationStart(Animator animation) {
+                mLabel.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animation) {
+
+            }
+
+            @Override
+            public void onAnimationCancel(Animator animation) {
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animator animation) {
+
+            }
+        });
+        animatorSet.start();
+
 
     }
-
 
 
     /**
      * Hide the label using an animation
      */
     private void hideLabel() {
-        mLabel.setAlpha(1f);
-        mLabel.setTranslationY(0f);
-        mLabel.animate()
-                .alpha(0f)
-                .translationY(mLabel.getHeight())
-                .setDuration(ANIMATION_DURATION)
-                .setListener(new AnimatorListenerAdapter() {
-                    @Override
-                    public void onAnimationEnd(Animator animation) {
-                        mLabel.setVisibility(View.GONE);
-                    }
-                }).start();
+        ViewHelper.setAlpha(mLabel, 1f);
+        ViewHelper.setTranslationY(mLabel, 0f);
+        ObjectAnimator alpha = ObjectAnimator.ofFloat(mLabel, "alpha", 0f);
+        ObjectAnimator translationY = ObjectAnimator.ofFloat(mLabel, "translationY", mLabel.getHeight());
+        AnimatorSet animatorSet = new AnimatorSet();
+        animatorSet.addListener(new com.nineoldandroids.animation.Animator.AnimatorListener() {
+            @Override
+            public void onAnimationStart(com.nineoldandroids.animation.Animator animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(com.nineoldandroids.animation.Animator animation) {
+                mLabel.setVisibility(View.GONE);
+            }
+
+            @Override
+            public void onAnimationCancel(com.nineoldandroids.animation.Animator animation) {
+
+            }
+
+            @Override
+            public void onAnimationRepeat(com.nineoldandroids.animation.Animator animation) {
+
+            }
+        });
+        animatorSet.setDuration(ANIMATION_DURATION);
+        animatorSet.playTogether(alpha, translationY);
+        animatorSet.start();
+
     }
 
     /**
@@ -226,7 +279,7 @@ public class FloatLabelLayout extends FrameLayout {
         return mLabelColor;
     }
 
-    public void setmLabelColor(int color){
+    public void setmLabelColor(int color) {
         this.mLabelColor = color;
     }
 }
