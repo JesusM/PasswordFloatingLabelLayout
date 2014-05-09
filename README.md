@@ -1,4 +1,4 @@
-PasswordFloatingLabelLayout
+FloatingLabelLayout with custom criteria
 ===========================
 Forked from FloatingLabelLayout https://gist.github.com/chrisbanes/11247418, this sample adds a little behavior to the floating label showing how strong the password is.
 
