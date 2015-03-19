@@ -1,4 +1,4 @@
-package com.example.jesus.lib;/*
+package jesusm.floatlabellayout.lib;/*
  * Copyright (C) 2014 Chris Banes
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -29,6 +29,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.jesus.lib.R;
 import com.nineoldandroids.animation.Animator;
 import com.nineoldandroids.animation.AnimatorSet;
 import com.nineoldandroids.animation.ObjectAnimator;

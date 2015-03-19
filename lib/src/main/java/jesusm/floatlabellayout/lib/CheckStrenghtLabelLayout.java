@@ -1,4 +1,4 @@
-package com.example.jesus.lib;
+package jesusm.floatlabellayout.lib;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -9,6 +9,7 @@ import android.text.InputType;
 import android.util.AttributeSet;
 import android.widget.EditText;
 
+import com.example.jesus.lib.R;
 import com.nineoldandroids.animation.ArgbEvaluator;
 import com.nineoldandroids.animation.ValueAnimator;
 

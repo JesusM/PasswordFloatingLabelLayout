@@ -8,7 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin">
 
-    <com.example.jesus.lib.FloatLabelLayout
+    <jesusm.floatlabellayout.lib.FloatLabelLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -22,9 +22,9 @@
             android:imeOptions="actionNext"
             android:nextFocusDown="@+id/edit_password" />
 
-    </com.example.jesus.lib.FloatLabelLayout>
+    </jesusm.floatlabellayout.lib.FloatLabelLayout>
 
-    <com.example.jesus.lib.PasswordFloatLabelLayoutCheck
+    <jesusm.floatlabellayout.lib.PasswordFloatLabelLayoutCheck
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:floatLabelTextAppearance="@style/TextAppearance.YourApp.FloatLabel"
@@ -38,9 +38,9 @@
             android:singleLine="true"
             android:imeOptions="actionDone" />
 
-    </com.example.jesus.lib.PasswordFloatLabelLayoutCheck>
+    </jesusm.floatlabellayout.lib.PasswordFloatLabelLayoutCheck>
 
-    <com.example.jesus.lib.MailLabelLayoutCheck
+    <jesusm.floatlabellayout.lib.MailLabelLayoutCheck
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:floatLabelTextAppearance="@style/TextAppearance.YourApp.FloatLabel"
@@ -54,6 +54,6 @@
             android:singleLine="true"
             android:imeOptions="actionDone" />
 
-    </com.example.jesus.lib.MailLabelLayoutCheck>
+    </jesusm.floatlabellayout.lib.MailLabelLayoutCheck>
 
 </LinearLayout>

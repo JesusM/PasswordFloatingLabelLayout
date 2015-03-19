@@ -1,9 +1,11 @@
-package com.example.jesus.lib;
+package jesusm.floatlabellayout.lib;
 
 import android.content.Context;
 import android.text.InputType;
 import android.text.TextUtils;
 import android.util.AttributeSet;
+
+import com.example.jesus.lib.R;
 
 public class MailLabelLayoutCheck extends CheckStrenghtLabelLayout {
     private boolean valid = false;

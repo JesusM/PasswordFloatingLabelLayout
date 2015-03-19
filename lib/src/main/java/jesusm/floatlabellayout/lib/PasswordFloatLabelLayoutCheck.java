@@ -1,8 +1,10 @@
-package com.example.jesus.lib;
+package jesusm.floatlabellayout.lib;
 
 import android.content.Context;
 import android.text.InputType;
 import android.util.AttributeSet;
+
+import com.example.jesus.lib.R;
 
 public class PasswordFloatLabelLayoutCheck extends CheckStrenghtLabelLayout {
 
