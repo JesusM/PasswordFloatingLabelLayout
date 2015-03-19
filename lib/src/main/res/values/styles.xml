@@ -1,0 +1,16 @@
+<resources>
+
+    <style name="TextAppearance.YourApp.FloatLabel" parent="@style/PasswordFloatingLabelLayout.DefaultStyle">
+        <item name="android:textColor">@color/float_label</item>
+    </style>
+
+
+    <style name="PasswordFloatingLabelLayout.DefaultStyle" parent="android:TextAppearance.Small">
+        <item name="android:textColor">@color/float_label_password_default</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:fontFamily">sans-serif</item>
+
+    </style>
+
+</resources>

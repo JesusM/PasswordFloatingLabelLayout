@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="float_label">#ff007ef0</color>
-    <color name="float_label_password_bad">#ffac0005</color>
+    <color name="float_label_password_error">#ffac0005</color>
     <color name="float_label_password_regular">#fff0b31a</color>
     <color name="float_label_password_good">#ff1ca71c</color>
+    <color name="float_label_password_default">#5d000000</color>
 </resources>

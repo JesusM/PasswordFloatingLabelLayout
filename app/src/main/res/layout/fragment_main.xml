@@ -4,13 +4,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin">
 
-    <com.jesusm.floatinglabelpass.app.ui.activities.customviews.FloatLabelLayout
+    <com.example.jesus.lib.FloatLabelLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        app:floatLabelTextAppearance="@style/TextAppearance.YourApp.FloatLabel">
+        android:layout_height="wrap_content">
 
         <EditText
             android:id="@+id/edit_username"
@@ -22,12 +22,11 @@
             android:imeOptions="actionNext"
             android:nextFocusDown="@+id/edit_password" />
 
-    </com.jesusm.floatinglabelpass.app.ui.activities.customviews.FloatLabelLayout>
+    </com.example.jesus.lib.FloatLabelLayout>
 
-    <com.jesusm.floatinglabelpass.app.ui.activities.customviews.PasswordFloatLabelLayoutCheck
+    <com.example.jesus.lib.PasswordFloatLabelLayoutCheck
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         app:floatLabelTextAppearance="@style/TextAppearance.YourApp.FloatLabel"
         app:showStateIcon="true">
 
@@ -39,12 +38,11 @@
             android:singleLine="true"
             android:imeOptions="actionDone" />
 
-    </com.jesusm.floatinglabelpass.app.ui.activities.customviews.PasswordFloatLabelLayoutCheck>
+    </com.example.jesus.lib.PasswordFloatLabelLayoutCheck>
 
-    <com.jesusm.floatinglabelpass.app.ui.activities.customviews.MailLabelLayoutCheck
+    <com.example.jesus.lib.MailLabelLayoutCheck
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         app:floatLabelTextAppearance="@style/TextAppearance.YourApp.FloatLabel"
         app:showStateIcon="true">
 
@@ -56,6 +54,6 @@
             android:singleLine="true"
             android:imeOptions="actionDone" />
 
-    </com.jesusm.floatinglabelpass.app.ui.activities.customviews.MailLabelLayoutCheck>
+    </com.example.jesus.lib.MailLabelLayoutCheck>
 
 </LinearLayout>

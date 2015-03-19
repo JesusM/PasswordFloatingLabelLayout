@@ -1,17 +1,11 @@
-package com.jesusm.floatinglabelpass.app.ui.activities.customviews;
+package com.example.jesus.lib;
 
 import android.content.Context;
 import android.text.InputType;
 import android.util.AttributeSet;
 
-import com.jesusm.floatinglabelpass.app.R;
-
-/**
- * Created by Jesus on 03/05/14.
- */
 public class PasswordFloatLabelLayoutCheck extends CheckStrenghtLabelLayout {
 
-    private int passLength = 0;
     private boolean showLabelIcon = false;
 
     public PasswordFloatLabelLayoutCheck(Context context) {
@@ -30,10 +24,10 @@ public class PasswordFloatLabelLayoutCheck extends CheckStrenghtLabelLayout {
 
     @Override
     int getColorFromCriteria(String text) {
-        passLength = getEditText().getText().toString().length();
+        int passLength = getEditText().getText().toString().length();
         if (passLength < 3) {
             showLabelIcon = false;
-            return getResources().getColor(R.color.float_label_password_bad);
+            return getResources().getColor(R.color.float_label_password_error);
         } else if (passLength < 6) {
             showLabelIcon = false;
             return getResources().getColor(R.color.float_label_password_regular);

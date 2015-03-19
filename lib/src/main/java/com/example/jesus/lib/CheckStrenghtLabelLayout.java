@@ -1,20 +1,17 @@
-package com.jesusm.floatinglabelpass.app.ui.activities.customviews;
+package com.example.jesus.lib;
 
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.support.v4.content.res.ResourcesCompat;
 import android.text.InputType;
 import android.util.AttributeSet;
 import android.widget.EditText;
 
-import com.jesusm.floatinglabelpass.app.R;
 import com.nineoldandroids.animation.ArgbEvaluator;
 import com.nineoldandroids.animation.ValueAnimator;
 
-/**
- * Created by Jesus on 05/05/14.
- */
 public abstract class CheckStrenghtLabelLayout extends FloatLabelLayout {
 
     private static final long LABEL_COLOR_CHANGE_ANIMATION_TIME = 333L;
@@ -67,7 +64,7 @@ public abstract class CheckStrenghtLabelLayout extends FloatLabelLayout {
 
     private void initAcceptDrawableCompound() {
         // Read your drawable from somewhere
-        Drawable dr = getResources().getDrawable(R.drawable.ic_action_navigation_accept);
+        Drawable dr = ResourcesCompat.getDrawable(getResources(), R.drawable.ic_action_navigation_accept, null);
         Bitmap bitmap = ((BitmapDrawable) dr).getBitmap();
         // Scale it to the label size
         int acceptDrawableSize = (int) getLabel().getTextSize();

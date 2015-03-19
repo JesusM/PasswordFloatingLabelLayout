@@ -9,4 +9,5 @@
     <declare-styleable name="PasswordFloatLabelLayoutCheck">
         <attr name="showStateIcon" format="boolean" />
     </declare-styleable>
+
 </resources>

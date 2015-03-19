@@ -5,8 +5,24 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:0.9.+'
+        classpath 'com.android.tools.build:gradle:1.1.0'
     }
+}
+
+
+ext {
+    versionMajor = 1
+    versionMinor = 1
+    versionPatch = 0
+
+    versionCode = versionMajor * 1000 + versionMinor * 100 + versionPatch
+    versionName = versionMajor + "." + versionMinor + "." + versionPatch
+
+    minSdkVersion = 14
+    targetSdkVersion = 22
+    compileSdkVersion = 22
+    buildToolsVersion = '22.0.0'
+
 }
 
 allprojects {

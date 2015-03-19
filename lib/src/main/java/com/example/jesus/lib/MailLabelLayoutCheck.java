@@ -1,15 +1,10 @@
-package com.jesusm.floatinglabelpass.app.ui.activities.customviews;
+package com.example.jesus.lib;
 
 import android.content.Context;
 import android.text.InputType;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 
-import com.jesusm.floatinglabelpass.app.R;
-
-/**
- * Created by Jesus on 05/05/14.
- */
 public class MailLabelLayoutCheck extends CheckStrenghtLabelLayout {
     private boolean valid = false;
 
@@ -30,7 +25,7 @@ public class MailLabelLayoutCheck extends CheckStrenghtLabelLayout {
     int getColorFromCriteria(String target) {
         valid = isValidEmail(target);
         return valid ? getResources().getColor(R.color.float_label_password_good) :
-                getResources().getColor(R.color.float_label_password_bad);
+                getResources().getColor(R.color.float_label_password_error);
     }
 
     @Override

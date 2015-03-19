@@ -1,4 +1,4 @@
-package com.jesusm.floatinglabelpass.app.ui.activities.customviews;/*
+package com.example.jesus.lib;/*
  * Copyright (C) 2014 Chris Banes
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,19 +17,18 @@ package com.jesusm.floatinglabelpass.app.ui.activities.customviews;/*
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
+import android.support.annotation.NonNull;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.util.TypedValue;
-import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.jesusm.floatinglabelpass.app.R;
 import com.nineoldandroids.animation.Animator;
 import com.nineoldandroids.animation.AnimatorSet;
 import com.nineoldandroids.animation.ObjectAnimator;
@@ -42,16 +41,14 @@ import com.nineoldandroids.view.ViewHelper;
  * @see <a href="https://dribbble.com/shots/1254439--GIF-Mobile-Form-Interaction">Matt D. Smith on Dribble</a>
  * @see <a href="http://bradfrostweb.com/blog/post/float-label-pattern/">Brad Frost's blog post</a>
  */
-public class FloatLabelLayout extends FrameLayout {
+public class FloatLabelLayout extends LinearLayout {
 
-
-    private static final float DEFAULT_PADDING_LEFT_RIGHT_DP = 12f;
-    private static final long ANIMATION_DURATION = 150;
+    private static final int DEFAULT_PADDING_TOP_BOTTOM_DP = 8;
+    private static final long ANIMATION_DURATION = 100;
     private int mLabelColor = Color.GRAY;
 
     private EditText mEditText;
     private TextView mLabel;
-
 
     public FloatLabelLayout(Context context) {
         this(context, null);
@@ -63,46 +60,42 @@ public class FloatLabelLayout extends FrameLayout {
 
     public FloatLabelLayout(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
+        setOrientation(VERTICAL);
 
         final TypedArray a = context
                 .obtainStyledAttributes(attrs, R.styleable.FloatLabelLayout);
 
-        final int sidePadding = a.getDimensionPixelSize(
-                R.styleable.FloatLabelLayout_floatLabelSidePadding,
-                dipsToPix(DEFAULT_PADDING_LEFT_RIGHT_DP));
         mLabel = new TextView(context);
-        mLabel.setPadding(sidePadding, 0, sidePadding, 0);
-        mLabel.setVisibility(INVISIBLE);
-
-        mLabel.setTextAppearance(context,
-                a.getResourceId(R.styleable.FloatLabelLayout_floatLabelTextAppearance,
-                        android.R.style.TextAppearance_Small)
-        );
+        initLabelAppearance(context, a);
         mLabelColor = mLabel.getCurrentTextColor();
-
-
-        addView(mLabel, LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-
+        addView(mLabel, 0, new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
 
         a.recycle();
     }
 
+    private void initLabelAppearance(Context context, TypedArray a) {
+        mLabel.setVisibility(INVISIBLE);
+        mLabel.setPadding(0, dipsToPix(DEFAULT_PADDING_TOP_BOTTOM_DP), 0, 0);
+        mLabel.setTextAppearance(context,
+                a.getResourceId(R.styleable.FloatLabelLayout_floatLabelTextAppearance,
+                        R.style.PasswordFloatingLabelLayout_DefaultStyle)
+        );
+    }
+
 
     @Override
-    public final void addView(View child, int index, ViewGroup.LayoutParams params) {
+    public final void addView(@NonNull View child, int index, ViewGroup.LayoutParams params) {
         if (child instanceof EditText) {
             // If we already have an EditText, throw an exception
             if (mEditText != null) {
                 throw new IllegalArgumentException("We already have an EditText, can only have one");
             }
-
-            // Update the layout params so that the EditText is at the bottom, with enough top
-            // margin to show the label
-            final LayoutParams lp = new LayoutParams(params);
-            lp.gravity = Gravity.BOTTOM;
-            lp.topMargin = (int) mLabel.getTextSize();
-            params = lp;
-
+            child.setPadding(child.getPaddingLeft(), dipsToPix(DEFAULT_PADDING_TOP_BOTTOM_DP),
+                    child.getPaddingRight(), dipsToPix(DEFAULT_PADDING_TOP_BOTTOM_DP));
+            if (mLabel != null) {
+                mLabel.setPadding(child.getPaddingLeft(), mLabel.getPaddingTop(),
+                        child.getPaddingRight(), mLabel.getPaddingBottom());
+            }
             setEditText((EditText) child);
         }
 
@@ -199,7 +192,7 @@ public class FloatLabelLayout extends FrameLayout {
      */
     private void showLabel() {
         ObjectAnimator alpha = ObjectAnimator.ofFloat(mLabel, "alpha", 0f, 1f);
-        ObjectAnimator translationY = ObjectAnimator.ofFloat(mLabel, "translationY", mLabel.getHeight(), 0f);
+        ObjectAnimator translationY = ObjectAnimator.ofFloat(mLabel, "translationY", mLabel.getHeight() / 2, 0f);
         AnimatorSet animatorSet = new AnimatorSet();
         animatorSet.setDuration(ANIMATION_DURATION);
         animatorSet.playTogether(alpha, translationY);
@@ -226,9 +219,7 @@ public class FloatLabelLayout extends FrameLayout {
         });
         animatorSet.start();
 
-
     }
-
 
     /**
      * Hide the label using an animation
@@ -237,7 +228,7 @@ public class FloatLabelLayout extends FrameLayout {
         ViewHelper.setAlpha(mLabel, 1f);
         ViewHelper.setTranslationY(mLabel, 0f);
         ObjectAnimator alpha = ObjectAnimator.ofFloat(mLabel, "alpha", 0f);
-        ObjectAnimator translationY = ObjectAnimator.ofFloat(mLabel, "translationY", mLabel.getHeight());
+        ObjectAnimator translationY = ObjectAnimator.ofFloat(mLabel, "translationY", mLabel.getHeight() / 2);
         AnimatorSet animatorSet = new AnimatorSet();
         animatorSet.addListener(new com.nineoldandroids.animation.Animator.AnimatorListener() {
             @Override
@@ -247,7 +238,7 @@ public class FloatLabelLayout extends FrameLayout {
 
             @Override
             public void onAnimationEnd(com.nineoldandroids.animation.Animator animation) {
-                mLabel.setVisibility(View.GONE);
+                mLabel.setVisibility(View.INVISIBLE);
             }
 
             @Override

@@ -1,14 +1,9 @@
-package com.jesusm.floatinglabelpass.app.ui.activities.customviews;
+package com.example.jesus.lib;
 
 import android.content.Context;
 import android.text.InputType;
 import android.util.AttributeSet;
 
-import com.jesusm.floatinglabelpass.app.R;
-
-/**
- * Created by Jesus on 05/05/14.
- */
 public class SimpleLabelLayoutCheck extends CheckStrenghtLabelLayout {
 
     private int color = getResources().getColor(R.color.float_label);
